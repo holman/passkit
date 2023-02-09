@@ -5,7 +5,8 @@ module Passkit
         before_action :decrypt_payload, only: :create
 
         def create
-          send_data fetch_pass(@payload), disposition: 'inline', filename: "pass.pkpass", type: 'application/vnd.apple.pkpass'
+          path = fetch_pass(@payload).to_path
+          send_data File.read(path), disposition: 'inline', filename: "pass.pkpass", type: 'application/vnd.apple.pkpass'
         end
 
         # @return If request is authorized, returns HTTP status 200 with a payload of the pass data.
