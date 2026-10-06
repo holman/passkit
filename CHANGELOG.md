@@ -1,3 +1,6 @@
+## [Unreleased]
+- Answer `304 Not Modified` before generating and signing the pass when `If-Modified-Since` shows the device already has the current version.
+
 ## [0.8.3]
 - Exclude development and test files from the packaged gem.
 
